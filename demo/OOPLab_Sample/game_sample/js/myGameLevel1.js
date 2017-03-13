@@ -22,13 +22,17 @@
         characterPosition = {x: 0, y: -1138 * this.clock.scale};
 
 
-        this.clock = new Framework.Scene();
-
+				this.wholeClock = new Framework.Scene();
+        this.wholeClock.position = {
+            x: Framework.Game.getCanvasWidth() / 4,
+            y: Framework.Game.getCanvasHeight() / 4
+        };
 
 
         this.secondHandRotationRate = 0.3;
+				this.wholeClock.attach(this.clock);
 
-        this.rootScene.attach(this.clock);
+        this.rootScene.attach(this.wholeClock);
 
         //繪製Sprite的boundry (Debug用)
 

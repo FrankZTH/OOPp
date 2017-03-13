@@ -6,7 +6,7 @@ var practice = function() {
 			y:500//100會與原本的圖重疊
 		}
 		this.pic.rotation = 0;
-		this.pic.scale = 0.1;
+		this.pic.scale = 0.2;
 		this.position = {
 			x:100,
 			y:100
@@ -33,6 +33,14 @@ var practice = function() {
 			}
 			if(e.key === 'Left'){
 				this.pic.position.x -= 10;
+			}
+			if(e.key === 'Up'){
+				this.pic.position.y -= 10;
+				this.pic.scale -=0.01;
+			}
+			if(e.key === 'Down'){
+				this.pic.position.y += 10;
+				this.pic.scale += 0.01;
 			}
 		}
 	};

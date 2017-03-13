@@ -2,13 +2,6 @@
 
 	load: function(){
 
-	    var characterPosition;
-		this.pic = new Framework.Sprite(define.imagePath + '169.bmp');
-		this.pic.position={
-			x:100,
-			y:100
-		}
-
         this.isStop = false;
         this.isPlayed = false;
 
@@ -19,13 +12,11 @@
             y: 0
         };
 
-        characterPosition = {x: 0, y: -1138 * this.clock.scale};
 
-
-				this.wholeClock = new Framework.Scene();
+		this.wholeClock = new Framework.Scene();
         this.wholeClock.position = {
-            x: Framework.Game.getCanvasWidth() / 4,
-            y: Framework.Game.getCanvasHeight() / 4
+            x: Framework.Game.getCanvasWidth() / 2,
+            y: Framework.Game.getCanvasHeight() / 2
         };
 
 
@@ -42,20 +33,14 @@
         //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
 
         this.audio = new Framework.Audio({
-            kick: {
-                //mp3: define.musicPath + 'kick2.mp3',
-                //ogg: define.musicPath + 'kick2.ogg',
-                //wav: define.musicPath + 'kick2.wav'
-            }, song1:{
-                mp3: define.musicPath + 'NTUT_classic.mp3',
+            LV1:{
+                mp3: define.musicPath + 'LV1.mp3',
                 //ogg: define.musicPath + 'Hot_Heat.ogg',
                 //wav: define.musicPath + 'Hot_Heat.wav'
-            }, song2:{
-                mp3: define.musicPath + 'NTUT_modern.mp3',  //主背景音量
-                //ogg: define.musicPath + 'The_Messenger.ogg',
-                //wav: define.musicPath + 'The_Messenger.wav'
             }
         });
+
+        this.audio.play({name: 'LV1', loop: true});
 
         //播放時, 需要給name, 其餘參數可參考W3C
 
@@ -87,16 +72,10 @@
     update: function() {
         var game = this;
         this.rootScene.update();
+        this.practice.update();
 		//this.Practice.update();
         //以下為當被攻擊時會停下來, 並且當被攻擊的動畫播放完時便繼續跑的Scenario
 
-        //以上為當被攻擊時會停下來, 並且當被撞到的動畫播放完時便繼續跑的Scenario
-		this.position.x ++;
-		this.rotation ++;
-		this.pic.position = this.position;
-		this.pic.rotation = this.rotation;
-
-		this.practice.update();
     },
 
     draw:function(parentCtx){
@@ -104,7 +83,7 @@
     },
 
     keydown:function(e, list){
-
+    	this.practice.keydown(e, list);
     },
 
     touchstart: function (e) {

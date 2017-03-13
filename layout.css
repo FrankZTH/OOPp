@@ -8,12 +8,15 @@
   left:25px;
   -webkit-user-select: none; /*禁止選取(Chorme)，不會有藍框框*/
 }
-
+.book{
+  background-image:url("./book.png");
+  width:100px;
+}
 .book:hover{   /*觸碰後*/
   opacity: 0.5;/*透明度*/
 }
 body{
-  background-image:"./brokentable.jpg";
+  background-image:url("./brokentable.jpg");
   background-position: center;
   background-size:cover;
   background-repeat: no-repeat;

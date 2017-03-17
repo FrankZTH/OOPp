@@ -4,7 +4,7 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
         this.loading = new Framework.Sprite(define.imagePath + 'loading.jpg');
         this.loading.position = {x: Framework.Game.getCanvasWidth() / 2 , y: Framework.Game.getCanvasHeight() / 2};
 
-        //為了或得到this.loading這個Sprite的絕對位置, 故需要先計算一次(在Game Loop執行時, 則會自動計算, 但因為loadingProgress只支援draw故需要自行計算)                  
+        //為了或得到this.loading這個Sprite的絕對位置, 故需要先計算一次(在Game Loop執行時, 則會自動計算, 但因為loadingProgress只支援draw故需要自行計算)
     },
 
     //在initialize時會觸發的事件
@@ -18,16 +18,16 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
     },
 
 	load: function(){
-		//Animation Sprite會用到的圖片資源        
-        var photoLink = 
-        [               
+		//Animation Sprite會用到的圖片資源
+        var photoLink =
+        [
             define.imagePath + 'NTUT1.png'
         ];
 
         this.scrollBar = new Framework.Sprite(define.imagePath + 'scrollBar.png');
         this.rightArrow = new Framework.Sprite(define.imagePath + 'rightArrow.png');
         this.photo = new Framework.AnimationSprite({url: photoLink});
-		
+
 		this.isTouchArrow = false;
         this.previousTouch = { x: 0, y: 0 };
         this.currentTouch = { x: 0, y: 0 };
@@ -42,7 +42,7 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
 
         //由於scrollBar將會被attach到this.center上
         //故x設為0, 表示x也是要正中心
-        
+
         this.scrollBar.position = {
             x: Framework.Game.getCanvasWidth() / 2 - 10,
             y: Framework.Game.getCanvasHeight() / 4 * 3.5
@@ -70,7 +70,7 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
             x: Framework.Game.getCanvasWidth() / 2 - 400,
             y: Framework.Game.getCanvasHeight() / 4 * 3.5
         };
-		
+
         this.center.attach(this.photo);
 
         //rootScene為系統預設的容器, 由於其他東西都被attach到center上
@@ -83,24 +83,24 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
         this.photo.start();
 
 	},
-	
+
     initialize: function() {
-		
+
     },
 
-    update:function(){     
+    update:function(){
         this.rootScene.update();
-        //this.rootScene.update(); 
+        //this.rootScene.update();
 
         //目前的Framework, 當任何一個GameObject不做attach時, 則必須要自行update
-        // this.center.update();        
+        // this.center.update();
         this.scrollBar.update();
     },
 
-    draw: function(parentCtx) { 
+    draw: function(parentCtx) {
         //this.rootScene.draw();一定要在第一行
         this.rootScene.draw(parentCtx);
-        
+
     },
 
     mouseup: function(e) {
@@ -108,23 +108,23 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
     },
 
     mousedown: function(e) {
-        //console.log為Browser提供的function, 可以在debugger的console內看到被印出的訊息                    
+        //console.log為Browser提供的function, 可以在debugger的console內看到被印出的訊息
         if (e) {
             console.log(e.x, e.y);
         }
-        
+
         this.previousTouch = { x: e.x, y: e.y };
         if (this.previousTouch.x > this.rightArrow.upperLeft.x && this.previousTouch.x < this.rightArrow.upperRight.x && this.previousTouch.y > this.rightArrow.upperLeft.y && this.previousTouch.y < this.rightArrow.lowerLeft.y) {
             this.isTouchArrow = true;
         }
     },
 
-    mousemove: function(e) {        
+    mousemove: function(e) {
         if (this.isTouchArrow) {
             this.currentTouch = { x: e.x, y: e.y };
             if (this.currentTouch.x > this.previousTouch.x && this.currentTouch.y < this.rightArrow.lowerLeft.y && this.currentTouch.y > this.rightArrow.upperLeft.y) {
                 //當arrow被Touch到時, 會跟隨著觸控的位置移動
-                this.rightArrow.position.x = this.rightArrow.position.x + this.currentTouch.x - this.previousTouch.x 
+                this.rightArrow.position.x = this.rightArrow.position.x + this.currentTouch.x - this.previousTouch.x
                 if(this.currentTouch.x > Framework.Game.getCanvasWidth() - this.rightArrow.width - 150) { //改變拉條長度
                     //當要換關時, 可以呼叫goToNextLevel, goToPreviousLevel, goToLevel(levelName)
                     this.audio.pauseAll();
@@ -148,7 +148,7 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
     touchend: function (e) {
         this.mouseup();
     },
-    
+
     touchmove: function (e) {
         this.mousemove({ x: e.touches[0].clientX, y: e.touches[0].clientY });
     }

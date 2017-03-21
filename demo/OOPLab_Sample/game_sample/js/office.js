@@ -5,8 +5,8 @@ var office = Framework.Class(Framework.Level , {
         this.isStop = false;
         this.isPlayed = false;
 
-        this.background = new Framework.Sprite(define.imagePath + 'office.jpg');
-        this.background.scale = 1.10;  //時鐘規模
+        this.background = new Framework.Sprite(define.imagePath + 'office.png');
+        this.background.scale = 0.32;  //時鐘規模
         this.background.position = {  //以時鐘圖片的規模為原點
 					x: Framework.Game.getCanvasWidth() / 2 ,
 					y: Framework.Game.getCanvasHeight() / 2

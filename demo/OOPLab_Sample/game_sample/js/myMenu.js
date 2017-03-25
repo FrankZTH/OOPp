@@ -56,30 +56,22 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
 
         this.audio = new Framework.Audio({
             song1:{
-                mp3: define.musicPath + 'Scared.mp3'   //應該是讓時針旋轉
-                //ogg: define.musicPath + 'Hot_Heat.ogg',
-                //wav: define.musicPath + 'Hot_Heat.wav'
+                mp3: define.musicPath + 'Scared.mp3'
             }
         });
 
         this.audio.play({name: 'song1', loop: true});
 
-        //Framework支援scale, rotation等功能
         this.rightArrow.scale = 0.15;
         this.rightArrow.position = {
             x: Framework.Game.getCanvasWidth() / 2 - 400,
             y: Framework.Game.getCanvasHeight() / 4 * 3.5
         };
-
         this.center.attach(this.photo);
-
-        //rootScene為系統預設的容器, 由於其他東西都被attach到center上
-        //將物件attach到center上, 順序是會影響繪製出來的效果的
         this.rootScene.attach(this.center);
         this.rootScene.attach(this.scrollBar);
         this.rootScene.attach(this.rightArrow);
 
-        //讓AnimationSprite開始被播放
         this.photo.start();
 
 	},
@@ -90,17 +82,11 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
 
     update:function(){
         this.rootScene.update();
-        //this.rootScene.update();
-
-        //目前的Framework, 當任何一個GameObject不做attach時, 則必須要自行update
-        // this.center.update();
         this.scrollBar.update();
     },
 
     draw: function(parentCtx) {
-        //this.rootScene.draw();一定要在第一行
         this.rootScene.draw(parentCtx);
-
     },
 
     mouseup: function(e) {
@@ -108,11 +94,9 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
     },
 
     mousedown: function(e) {
-        //console.log為Browser提供的function, 可以在debugger的console內看到被印出的訊息
         if (e) {
             console.log(e.x, e.y);
         }
-
         this.previousTouch = { x: e.x, y: e.y };
         if (this.previousTouch.x > this.rightArrow.upperLeft.x && this.previousTouch.x < this.rightArrow.upperRight.x && this.previousTouch.y > this.rightArrow.upperLeft.y && this.previousTouch.y < this.rightArrow.lowerLeft.y) {
             this.isTouchArrow = true;

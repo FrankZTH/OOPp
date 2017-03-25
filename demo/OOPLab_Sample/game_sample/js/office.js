@@ -22,14 +22,18 @@ var office = Framework.Class(Framework.Level , {
 
 		this.practice = new Practice();
 		this.practice.load();
+
+
 		this.rootScene.attach(this.practice.pic);
-		this.position = {
-			x: 100,
-			y: 100
-		}
-	},
+		},
+
 
     initialize: function() {
     },
+
+		click: function (e) {
+				console.log(e.x, e.y);
+							this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
+		},
 
 });

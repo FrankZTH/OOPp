@@ -6,7 +6,7 @@ var Practice = function() {
 			y:500//100會與原本的圖重疊
 		}
 		this.pic.rotation = 0;
-		this.pic.scale = -1;
+		this.pic.scale = 0.2;
 		this.position = {
 			x:100,
 			y:100

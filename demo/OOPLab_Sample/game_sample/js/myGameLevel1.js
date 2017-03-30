@@ -1,7 +1,7 @@
 var MyGame = Framework.Class(Framework.Level , {
 
 	load: function(){
-
+				var off = this;
         this.isStop = false;
         this.isPlayed = false;
 
@@ -25,10 +25,12 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.downArrow = new downArrow();
 				this.downArrow.load();
 
-				this.book = new book();
+				this.book = new book(off);
 				this.book.load();
 
-				this.clickBook = new clickBook();
+				//this.clickBook = new clickBook();
+				//this.now = 0;
+
 
 				this.rootScene.attach(this.practice.pic);
 				this.rootScene.attach(this.downArrow);
@@ -38,6 +40,10 @@ var MyGame = Framework.Class(Framework.Level , {
 	initialize: function() {
 
 	},
+	update:function(){
+
+
+	},
 	click: function (e) {
 			console.log(e.x, e.y);
 
@@ -45,16 +51,19 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.audio.stopAll();
 	      Framework.Game.goToLevel('office');
 			}
-			else if(this.book.mousedown(e)==0){}
+			else if(this.book.mousedown(e)==0){
+
+			}
 
 			else
 			{
 						this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
 			}
 	},
-	/*mousedown:function(e){
-		this.book.mousedown(e);
-		this.clickBook.mousedown(e);
-	},*/
+
+	/*draw(ctx) {
+		console.log('yo');
+	}*/
+
 
 });

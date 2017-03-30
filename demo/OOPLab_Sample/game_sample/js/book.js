@@ -10,7 +10,6 @@ var book = function() {
 		this.book.rotation=-22;
 
 		this.rotation = 0;
-
 	};
 
 	this.initialize = function(){
@@ -26,19 +25,24 @@ var book = function() {
 	this.update = function() {
 		this.book.position={
 		}
+		if(this.clickBook)
+			this.clickBook.update();
 	};
 
 	this.draw = function(ctx){
 		this.book.draw(ctx);
+		if(this.clickBook)
+			this.clickBook.draw(ctx);
 	};
 
 	this.mousedown= function(e){
 		console.log(e);
 		if(e.x >= this.book.position.x - 57 && e.x <= this.book.position.x + 57 && e.y >= this.book.position.y - 40 && e.y <= this.book.position.y + 40) {
 			this.putinbag();
-			this.clickBook = new clickBook();
+			this.clickBook = new clickBook(off);
 			this.clickBook.load();
-			this.clickBook.draw();
+			this.begintime= Date.now();
+
 			return 0;
 		}
 		else {

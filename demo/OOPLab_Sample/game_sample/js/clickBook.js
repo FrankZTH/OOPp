@@ -12,7 +12,10 @@ var clickBook = function() {
 			y:100
 		}
 		this.rotation = 0;
-		
+
+
+		this.overScene = new OverScene(off);
+		this.overScene.load();
 	};
 
 	this.initialize = function(){
@@ -20,11 +23,12 @@ var clickBook = function() {
 	};
 
 	this.update = function() {
-
+		this.overScene.update();
 	};
 
 	this.draw = function(ctx){
 		this.book.draw(ctx);
+		this.overScene.draw(ctx);
 	};
 
 	this.mousedown = function(e){

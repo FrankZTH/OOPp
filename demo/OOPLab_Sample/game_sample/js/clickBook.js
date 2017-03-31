@@ -1,6 +1,6 @@
-var clickBook = function() {
+var clickBook = function(bookSelf) {
 	this.load = function() {
-		this.book = new Framework.Sprite(define.imagePath + 'book.png');
+		this.book = new Framework.Sprite(define.imagePath + 'openingbook.png');
 		this.book.position={
 			x: Framework.Game.getCanvasWidth() / 2,
 			y: Framework.Game.getCanvasHeight() / 2
@@ -14,7 +14,7 @@ var clickBook = function() {
 		this.rotation = 0;
 
 
-		this.overScene = new OverScene(off);
+		this.overScene = new OverScene(bookSelf);
 		this.overScene.load();
 	};
 

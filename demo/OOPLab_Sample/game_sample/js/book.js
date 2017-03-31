@@ -1,5 +1,6 @@
 var book = function() {
 	this.load = function() {
+		this.self = this;
 		this.book = new Framework.Sprite(define.imagePath + 'book.png');
 		this.book.position={
 			x: Framework.Game.getCanvasWidth() / 6.5-10,
@@ -39,7 +40,7 @@ var book = function() {
 		console.log(e);
 		if(e.x >= this.book.position.x - 57 && e.x <= this.book.position.x + 57 && e.y >= this.book.position.y - 40 && e.y <= this.book.position.y + 40) {
 			this.putinbag();
-			this.clickBook = new clickBook(off);
+			this.clickBook = new clickBook(this.self);
 			this.clickBook.load();
 			this.begintime= Date.now();
 

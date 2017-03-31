@@ -19,21 +19,22 @@ var office = Framework.Class(Framework.Level , {
 
             }
         });
+				this.audio.play({name: 'LV1', loop: true});
 
-		this.practice = new Practice();
-		this.practice.load();
-
-
-		this.rootScene.attach(this.practice.pic);
-		},
+				this.practice = new Practice();
+				this.practice.load();
 
 
-    initialize: function() {
-    },
+				this.rootScene.attach(this.practice.pic);
+				},
 
-		click: function (e) {
-				console.log(e.x, e.y);
-							this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
-		},
+
+			  initialize: function() {
+			  },
+
+				click: function (e) {
+						console.log(e.x, e.y);
+									this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
+				},
 
 });

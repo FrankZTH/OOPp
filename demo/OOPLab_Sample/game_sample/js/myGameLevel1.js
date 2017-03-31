@@ -1,7 +1,6 @@
 var MyGame = Framework.Class(Framework.Level , {
 
 	load: function(){
-				var off = this;
         this.isStop = false;
         this.isPlayed = false;
 
@@ -16,16 +15,17 @@ var MyGame = Framework.Class(Framework.Level , {
 
         this.audio = new Framework.Audio({
             LV1:{
-                mp3: define.musicPath + 'LV1.mp3',
+								mp3: define.musicPath + 'LV1.mp3',
             }
         });
+				this.audio.play({name: 'LV1', loop: true});
 				this.practice = new Practice();
 				this.practice.load();
 
 				this.downArrow = new downArrow();
 				this.downArrow.load();
 
-				this.book = new book(off);
+				this.book = new book();
 				this.book.load();
 
 				//this.clickBook = new clickBook();

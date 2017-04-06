@@ -4,7 +4,7 @@ var loadFrameworkEnd;
     //動態依序載入JS
     //ref: http://blog.darkthread.net/blogs/darkthreadtw/archive/2009/01/15/4061.aspx
     var  importJS = function(jsConf, src, lookFor) {
-        var headID = document.getElementsByTagName("head")[0]; 
+        var headID = document.getElementsByTagName("head")[0];
         var newJs = document.createElement('script');
         newJs.type = 'text/javascript';
         newJs.src= jsConf[0].src;
@@ -31,15 +31,15 @@ var loadFrameworkEnd;
                 callback();
             } else if (eval("typeof " + jsConf[0].lookFor) !== 'undefined') {
                     clearInterval(interval);
-                    callback();      
+                    callback();
                 }
             }, 50);
     }
 
-    //陣列和載入JS檔的順序相同, lookFor為在要載入的檔案中, 
+    //陣列和載入JS檔的順序相同, lookFor為在要載入的檔案中,
     //有用到的全域變數, importJS這個function, 會在找到lookFor的變數後
     //才會繼續loading下一個檔案, 如果沒有需要lookFor, 則以空字串代表
-    var frameworklistScript = 
+    var frameworklistScript =
     [
 		{ src: '../../src/config.js'},
         { src: '../../src/Record.js'},
@@ -71,8 +71,5 @@ var loadFrameworkEnd;
         //{ src: 'game_sample/js/loadGame.js'},
     ]
     importJS(frameworklistScript);
-    
+
 })();
-
-
-    

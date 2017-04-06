@@ -18,7 +18,7 @@ var MyGame = Framework.Class(Framework.Level , {
 								mp3: define.musicPath + 'LV1.mp3',
             }
         });
-				this.audio.play({name: 'LV1', loop: true});
+				//this.audio.play({name: 'LV1', loop: true});
 				this.practice = new Practice();
 				this.practice.load();
 
@@ -35,7 +35,7 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.rootScene.attach(this.practice.pic);
 				this.rootScene.attach(this.downArrow);
 				this.rootScene.attach(this.book);
-
+				//this.rootScene.attach(this.clickBook);
 	},
 	initialize: function() {
 
@@ -46,7 +46,6 @@ var MyGame = Framework.Class(Framework.Level , {
 	},
 	click: function (e) {
 			console.log(e.x, e.y);
-
 			if(this.downArrow.mousedown(e)==0){
 				this.audio.stopAll();
 	      Framework.Game.goToLevel('office');
@@ -54,16 +53,21 @@ var MyGame = Framework.Class(Framework.Level , {
 			else if(this.book.mousedown(e)==0){
 
 			}
-
 			else
 			{
-						this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
+					this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
 			}
 	},
 
 	/*draw(ctx) {
 		console.log('yo');
 	}*/
+	mousemove: function(e) {        //偵測滑鼠移動並播放圖片
+        this.book.mousemove(e);
+    },
 
+	mouseup: function(e){
+		this.book.mouseup(e);
+	}
 
 });

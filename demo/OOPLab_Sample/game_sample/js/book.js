@@ -13,7 +13,6 @@ var book = function() {
 		this.isStart=false;
 		this.rotation = 0;
 		this.now = 0;
-
 	};
 
 	this.initialize = function(){
@@ -42,28 +41,17 @@ var book = function() {
 			this.clickBook.draw(ctx);
 	};
 
-	/*this.click= function(e){
-		console.log(e);
-		if(e.x >= this.book.position.x - 57 && e.x <= this.book.position.x + 57 && e.y >= this.book.position.y - 40 && e.y <= this.book.position.y + 40) {
-			this.putinbag();
-			this.clickBook = new clickBook(this.self);
-			this.clickBook.load();
-			this.begintime= Date.now();
-			return 0;
-		}
-		else {
-				return 1;
-		}
-	};*/
-
 	this.mousedown = function(e){
 		if(e.x >= this.book.position.x - 57 && e.x <= this.book.position.x + 57 && e.y >= this.book.position.y - 40 && e.y <= this.book.position.y + 40) {
 			this.isStart=true;
+			console.log("mousedown");
 			this.putinbag();
+			this.now=(Date.now()-this.begintime)/1000;
 			this.clickBook = new clickBook(this.self);
 			this.clickBook.load();
-			this.mousemove(e);
+			if(j!=0&&this.now>1) this.mousemove(e);
 			j++;
+
 			return 0;
 		}
 		else {
@@ -79,6 +67,7 @@ var book = function() {
 				x:Framework.Game.getCanvasWidth()-100,
 				y:Framework.Game.getCanvasHeight()/5
 			}
+			return 0;
 		}
 	};
 

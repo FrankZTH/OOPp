@@ -30,7 +30,8 @@ var MyGame = Framework.Class(Framework.Level , {
 
 				//this.clickBook = new clickBook();
 				//this.now = 0;
-
+				this.overScene = new OverScene();
+				this.overScene.load();
 
 				this.rootScene.attach(this.practice.pic);
 				this.rootScene.attach(this.downArrow);
@@ -50,9 +51,10 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.audio.stopAll();
 	      Framework.Game.goToLevel('office');
 			}
-			else if(this.book.mousedown(e)==0){
+			else if(this.book.mousemove(e)==0){
 
 			}
+			//else if(this.book.mouseup(e)==0){}
 			else
 			{
 					this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
@@ -65,6 +67,10 @@ var MyGame = Framework.Class(Framework.Level , {
 	mousemove: function(e) {        //偵測滑鼠移動並播放圖片
         this.book.mousemove(e);
     },
+
+	mousedown: function(e){
+		this.book.mousedown(e);
+	},
 
 	mouseup: function(e){
 		this.book.mouseup(e);

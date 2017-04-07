@@ -89,10 +89,6 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
         this.rootScene.draw(parentCtx);
     },
 
-    mouseup: function(e) {
-        this.isTouchArrow = false;
-    },
-
     mousedown: function(e) {
         if (e) {
             console.log(e.x, e.y);

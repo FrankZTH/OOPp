@@ -37,7 +37,7 @@ this.update = function() {
 	}
 
   this.click = function(e){
-    console.log(e);
+    //console.log(e);
     if(e.x >= 0 && e.x <= Framework.Game.getCanvasWidth() && e.y >= 0 && e.y <= Framework.Game.getCanvasHeight()) {
 			return 1;
 		}

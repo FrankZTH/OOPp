@@ -32,14 +32,14 @@ var loadGameEnd;
                     clearInterval(interval);
                     callback();
                 }
-            }, 50);
+            }, 150);
     }
     var listScript =
     [
         { src: 'game_sample/js/define.js', lookFor: 'define' },
         { src: 'game_sample/js/clickBook.js', loofFor: 'clickBook'},
-        { src: 'game_sample/js/downArrow.js', loofFor: 'downArrow'},
         { src: 'game_sample/js/Book.js', loofFor: 'Book'},
+        { src: 'game_sample/js/downArrow.js', loofFor: 'downArrow'},
         { src: 'game_sample/js/OverScene.js', loofFor: 'OverScene'},
         { src: 'game_sample/js/myMenu.js', lookFor: 'MyMenu' },
 		    { src: 'game_sample/js/Practice.js', loofFor: 'Practice'},

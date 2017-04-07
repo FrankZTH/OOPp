@@ -39,7 +39,7 @@ var loadEnd;
                     clearInterval(interval);
                     callback();
                 }
-            }, 250);
+            }, 150);
     }
 
     //陣列和載入JS檔的順序相同, lookFor為在要載入的檔案中,

@@ -24,6 +24,8 @@ var office = Framework.Class(Framework.Level , {
 				this.practice = new Practice();
 				this.practice.load();
 
+				this.book = new book();
+				this.book.load();
 
 				this.rootScene.attach(this.practice.pic);
 				},
@@ -33,8 +35,19 @@ var office = Framework.Class(Framework.Level , {
 			  },
 
 				click: function (e) {
-						console.log(e.x, e.y);
-									this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
+						this.practice.move(e);
 				},
+
+				mousemove: function(e) {        //偵測滑鼠移動並播放圖片
+			    this.book.mousemove(e);
+			  },
+
+				mousedown: function(e){
+					this.book.mousedown(e);
+				},
+
+				mouseup: function(e){
+					this.book.mouseup(e);
+				}
 
 });

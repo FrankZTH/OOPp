@@ -12,11 +12,15 @@ var Practice = function() {
 			y:100
 		}
 		this.rotation = 0;
-
+		this.now = 0;
 	};
 
 	this.initialize = function(){
 
+	};
+
+	this.move = function(e){
+			this.pic.position.x = e.x ;
 	};
 
 	this.update = function() {

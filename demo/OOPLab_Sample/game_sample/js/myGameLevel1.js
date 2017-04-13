@@ -51,13 +51,13 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.audio.stopAll();
 	      Framework.Game.goToLevel('office');
 			}
-			else if(this.book.mousemove(e)==0){
+			else if(this.book.mousemove(e)){
 
 			}
 			//else if(this.book.mouseup(e)==0){}
 			else
 			{
-					this.practice.pic.position.x+=(e.x-this.practice.pic.position.x);
+					this.practice.move(e);
 			}
 	},
 
@@ -65,8 +65,8 @@ var MyGame = Framework.Class(Framework.Level , {
 		console.log('yo');
 	}*/
 	mousemove: function(e) {        //偵測滑鼠移動並播放圖片
-        this.book.mousemove(e);
-    },
+    this.book.mousemove(e);
+  },
 
 	mousedown: function(e){
 		this.book.mousedown(e);

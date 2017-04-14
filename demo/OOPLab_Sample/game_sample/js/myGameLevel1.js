@@ -11,7 +11,7 @@ var MyGame = Framework.Class(Framework.Level , {
 					y: Framework.Game.getCanvasHeight() / 2
         };
 
-        this.rootScene.attach(this.background);
+        this.character = new Character(define.imagePath+)
 
         this.audio = new Framework.Audio({
             LV1:{
@@ -32,7 +32,7 @@ var MyGame = Framework.Class(Framework.Level , {
 				//this.now = 0;
 				this.overScene = new OverScene();
 				this.overScene.load();
-
+				this.rootScene.attach(this.background);
 				this.rootScene.attach(this.practice.pic);
 				this.rootScene.attach(this.downArrow);
 				this.rootScene.attach(this.book);

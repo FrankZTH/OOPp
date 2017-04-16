@@ -21,6 +21,7 @@ this.update = function() {
       console.log("off.book", bookSelf);
       i++;
       delete bookSelf.clickBook;
+      //刪除本身
     }
 }
 

@@ -1,8 +1,6 @@
 var MyGame = Framework.Class(Framework.Level , {
 
 	load: function(){
-        this.isStop = false;
-        this.isPlayed = false;
 
         this.background = new Framework.Sprite(define.imagePath + 'brokentable.jpg');
         this.background.scale = 1.10;
@@ -10,17 +8,15 @@ var MyGame = Framework.Class(Framework.Level , {
 					x: Framework.Game.getCanvasWidth() / 2 ,
 					y: Framework.Game.getCanvasHeight() / 2
         };
-
-        this.character = new Character(define.imagePath+)
-
+				this.characterPosition = {x: Framework.Game.getCanvasWidth() / 2 ,
+														      y: Framework.Game.getCanvasHeight() / 2+100};
+        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,scale:0.1,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
         this.audio = new Framework.Audio({
             LV1:{
 								mp3: define.musicPath + 'LV1.mp3',
             }
         });
-				//this.audio.play({name: 'LV1', loop: true});
-				this.practice = new Practice();
-				this.practice.load();
+				this.audio.play({name: 'LV1', loop: true});
 
 				this.downArrow = new downArrow();
 				this.downArrow.load();
@@ -28,42 +24,36 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.book = new book();
 				this.book.load();
 
-				//this.clickBook = new clickBook();
-				//this.now = 0;
 				this.overScene = new OverScene();
 				this.overScene.load();
 				this.rootScene.attach(this.background);
-				this.rootScene.attach(this.practice.pic);
 				this.rootScene.attach(this.downArrow);
 				this.rootScene.attach(this.book);
-				//this.rootScene.attach(this.clickBook);
+				this.rootScene.attach(this.character.sprite);
 	},
 	initialize: function() {
 
 	},
 	update:function(){
-
+		this.character.update();
 
 	},
 	click: function (e) {
-			console.log(e.x, e.y);
-			if(this.downArrow.mousedown(e)==0){
+			if(this.downArrow.mousedown(e)==0&&this.character.judge()==1){
 				this.audio.stopAll();
 	      Framework.Game.goToLevel('office');
 			}
 			else if(this.book.mousemove(e)){
 
 			}
-			//else if(this.book.mouseup(e)==0){}
+
 			else
 			{
-					this.practice.move(e);
+					this.character.move(e.x);
+
 			}
 	},
 
-	/*draw(ctx) {
-		console.log('yo');
-	}*/
 	mousemove: function(e) {        //偵測滑鼠移動並播放圖片
     this.book.mousemove(e);
   },

@@ -42,7 +42,6 @@ var loadGameEnd;
         { src: 'game_sample/js/downArrow.js', loofFor: 'downArrow'},
         { src: 'game_sample/js/OverScene.js', loofFor: 'OverScene'},
         { src: 'game_sample/js/myMenu.js', lookFor: 'MyMenu' },
-		    { src: 'game_sample/js/Practice.js', loofFor: 'Practice'},
         { src: 'game_sample/js/myGameLevel1.js', lookFor: 'MyGame' },
         { src: 'game_sample/js/office.js', lookFor: 'office'},
         { src: 'game_sample/js/character.js', lookFor: 'Character'},

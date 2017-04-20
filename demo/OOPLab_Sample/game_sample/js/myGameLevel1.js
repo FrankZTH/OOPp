@@ -8,8 +8,10 @@ var MyGame = Framework.Class(Framework.Level , {
 					x: Framework.Game.getCanvasWidth() / 2 ,
 					y: Framework.Game.getCanvasHeight() / 2
         };
-				this.characterPosition = {x: Framework.Game.getCanvasWidth() / 2 ,
-														      y: Framework.Game.getCanvasHeight() / 2+100};
+				this.characterPosition = {
+					x: Framework.Game.getCanvasWidth() / 2 ,
+				  y: Framework.Game.getCanvasHeight() / 2+100
+				};
         this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,scale:0.1,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
         this.audio = new Framework.Audio({
             LV1:{
@@ -27,9 +29,9 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.overScene = new OverScene();
 				this.overScene.load();
 				this.rootScene.attach(this.background);
-				this.rootScene.attach(this.downArrow);
 				this.rootScene.attach(this.book);
 				this.rootScene.attach(this.character.sprite);
+				this.rootScene.attach(this.downArrow);
 	},
 	initialize: function() {
 
@@ -43,15 +45,6 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.audio.stopAll();
 	      Framework.Game.goToLevel('office');
 			}
-			else if(this.book.mousemove(e)){
-
-			}
-
-			else
-			{
-					this.character.move(e.x);
-
-			}
 	},
 
 	mousemove: function(e) {        //偵測滑鼠移動並播放圖片
@@ -60,10 +53,12 @@ var MyGame = Framework.Class(Framework.Level , {
 
 	mousedown: function(e){
 		this.book.mousedown(e);
+
 	},
 
 	mouseup: function(e){
-		this.book.mouseup(e);
+		if(this.book.mouseup(e)==0){this.downArrow.mousedown(e);}
+		else this.character.move(e.x);
 	}
 
 });

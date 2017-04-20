@@ -1,32 +1,41 @@
 var office = Framework.Class(Framework.Level , {
 
-	load: function(){
+				load: function(){
 
-        this.background = new Framework.Sprite(define.imagePath + 'office.png');
-        this.background.scale = 0.32;  //時鐘規模
-        this.background.position = {  //以時鐘圖片的規模為原點
-					x: Framework.Game.getCanvasWidth() / 2 ,
-					y: Framework.Game.getCanvasHeight() / 2
-        };
-				this.characterPosition = {x: Framework.Game.getCanvasWidth() / 2 ,
-														      y: Framework.Game.getCanvasHeight() / 2+100};
-        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,scale:0.23,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:7,to:7}});
-
-
-        this.audio = new Framework.Audio({
-            LV1:{
-                mp3: define.musicPath + 'LV1.mp3',
-
-            }
-        });
-				this.audio.play({name: 'LV1', loop: true});
+	        this.background = new Framework.Sprite(define.imagePath + 'office.png');
+					this.change = new Framework.Sprite(define.imagePath + 'inside.jpg');
+	        this.background.scale = 0.32;  //時鐘規模
+					this.change.scale = 0.32;
+	        this.background.position = {  //以時鐘圖片的規模為原點
+						x: Framework.Game.getCanvasWidth() / 2 ,
+						y: Framework.Game.getCanvasHeight() / 2
+	        };
+					this.change.position = {
+						x: Framework.Game.getCanvasWidth() / 2 ,
+						y: Framework.Game.getCanvasHeight() / 2
+	        };
+					this.characterPosition = {x: Framework.Game.getCanvasWidth() / 2 ,
+															      y: Framework.Game.getCanvasHeight() / 2+100};
+	        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,scale:0.23,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
 
 
+	        this.audio = new Framework.Audio({
+	            LV1:{
+	                mp3: define.musicPath + 'LV1.mp3',
 
-				this.book = new book();
-				this.book.load();
-				this.rootScene.attach(this.background);
-				this.rootScene.attach(this.character.sprite);
+	            }
+	        });
+					this.audio.play({name: 'LV1', loop: true});
+
+
+					this.card = new card();
+					this.card.load();
+
+
+					this.rootScene.attach(this.background);
+					this.rootScene.attach(this.card);
+					this.rootScene.attach(this.character.sprite);
+
 				},
 
 
@@ -36,20 +45,22 @@ var office = Framework.Class(Framework.Level , {
 			  initialize: function() {
 			  },
 
-				click: function (e) {
-						this.character.move(e.x);
-				},
-
 				mousemove: function(e) {        //偵測滑鼠移動並播放圖片
-			    this.book.mousemove(e);
+			    this.card.mousemove(e);
+					if(e.x>=446&&e.x<=484&&e.y>=230&&e.y<=276){
+						this.rootScene.attach(this.change);
+						this.rootScene.attach(this.card);
+						this.rootScene.attach(this.character.sprite);
+					}
 			  },
 
 				mousedown: function(e){
-					this.book.mousedown(e);
+					this.card.mousedown(e);
 				},
 
 				mouseup: function(e){
-					this.book.mouseup(e);
+					if(this.card.mouseup(e)==0){}
+					else this.character.move(e.x);
 				}
 
 });

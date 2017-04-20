@@ -42,20 +42,22 @@ var book = function() {
 	};
 
 	this.mousedown = function(e){
-		if(e.x >= this.book.position.x - 57 && e.x <= this.book.position.x + 57 && e.y >= this.book.position.y - 40 && e.y <= this.book.position.y + 40) {
+		if(e.x >= this.book.position.x - 28 && e.x <= this.book.position.x + 28 && e.y >= this.book.position.y - 20 && e.y <= this.book.position.y + 20) {
 			this.isStart=true;
 			console.log("mousedown");
 			this.putinbag();
-			this.now=(Date.now()-this.begintime)/1000;
+			if(j==0){
+				this.clickBook = new clickBook(this.self);
+				this.clickBook.load();
+			}
+			if(j!=0) this.mousemove(e);
+		}
+		else if(e.x >= this.book.position.x - 57 && e.x <= this.book.position.x + 57 && e.y >= this.book.position.y - 40 && e.y <= this.book.position.y + 40) {
+			this.isStart=true;
 			this.clickBook = new clickBook(this.self);
 			this.clickBook.load();
-			if(j!=0&&this.now>1) this.mousemove(e);
+			if(j == 0) this.putinbag();
 			j++;
-
-			return 0;
-		}
-		else {
-			return 1;
 		}
 	};
 

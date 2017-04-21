@@ -41,6 +41,7 @@ var MyGame = Framework.Class(Framework.Level , {
 
 	},
 	click: function (e) {
+		console.log(e);
 			if(this.downArrow.mousedown(e)==0&&this.character.judge()==1){
 				this.audio.stopAll();
 	      Framework.Game.goToLevel('office');
@@ -52,6 +53,8 @@ var MyGame = Framework.Class(Framework.Level , {
   },
 
 	mousedown: function(e){
+		console.log(e);
+		console.log(e.e.which);
 		this.book.mousedown(e);
 
 	},

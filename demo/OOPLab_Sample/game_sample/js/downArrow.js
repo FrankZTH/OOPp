@@ -21,7 +21,7 @@ var downArrow = function() {
 	};
 
 	this.mousedown= function(e){
-		console.log(e);
+		//console.log(e);
     if(e.x >= this.downArrow.position.x-40 && e.x <= this.downArrow.position.x + 40 &&
        e.y >= this.downArrow.position.y-52.5 && e.y <= this.downArrow.position.y + +52.5)
     {

@@ -32,7 +32,7 @@ var Character = function(file, options) {
         this.temp = x;
         if(this.temp-this.sprite.position.x>0){
           this.runright();
-          console.log(this.sprite.position.x);
+          //console.log(this.sprite.position.x);
 
         }
         else if(this.temp-this.sprite.position.x<0){

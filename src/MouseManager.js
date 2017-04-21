@@ -47,6 +47,8 @@ var Framework = (function (Framework) {
 			pos.y = e.y || e.clientY;
 			pos.x = Math.floor((pos.x - totalOffsetX) / Framework.Game._widthRatio);
 			pos.y = Math.floor((pos.y - totalOffsetY) / Framework.Game._heightRatio);
+			pos.e = e;
+			//pos.which = e.which;
 
 			return pos;
 		};
@@ -73,7 +75,7 @@ var Framework = (function (Framework) {
 			e.preventDefault();
 			var e = countCanvasOffset(e);
 			userMouseMoveEvent.call(_subject, e);
-			
+
 			if(Framework.Game._isRecording && Framework.Game._config.isMouseMoveRecorded)
             {
             	Framework.Game._record.mousemove(e);
@@ -92,7 +94,7 @@ var Framework = (function (Framework) {
 		 * 而會在Level進行設定, 請參照
 		 * {{#crossLink "Level/keydown:event"}}{{/crossLink}},
 		 * {{#crossLink "Level/keyup:event"}}{{/crossLink}},
-		 * 
+		 *
 		 * @class MouseManager
 		 */
 		MouseManagerClass = function() {

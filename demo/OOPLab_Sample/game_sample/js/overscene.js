@@ -25,7 +25,6 @@ this.update = function() {
     }
 }
 
-
 	this.draw=function(ctx){
     //console.log('draw');
 		//parentCtx.fillStyle = (this.secondHandRotationRate > 0)?'green':'red';
@@ -34,7 +33,14 @@ this.update = function() {
     ctx.fillStyle = 'red';
     ctx.textBaseline = 'top';
     ctx.textAlign = 'left';
-    ctx.fillText("釋放我 讓我離開這裡".substr(0,this.now), this.x, this.y);
+    //ctx.fillText("釋放我 讓我離開這裡".substr(0,this.now), this.x, (this.y)50);
+    //ctx.fillText("釋放我 讓我離開這裡".substr(0,this.now), this.x, this.y);
+    for(var temp = 0;temp<this.now;temp++){
+        ctx.fillText("釋放我".substr(temp,1), this.x, this.y + temp * 50);
+    }
+    //ctx.fillText("釋放我 讓我離開這裡".substr(0,1), this.x, this.y);
+    //ctx.fillText("釋放我 讓我離開這裡".substr(1,1), this.x, this.y+50);
+    //ctx.fillText("釋放我 讓我離開這裡".substr(2,2), this.x, this.y+100);*/
 	}
 
   this.click = function(e){

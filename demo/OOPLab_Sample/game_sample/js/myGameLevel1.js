@@ -29,8 +29,8 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.overScene = new OverScene();
 				this.overScene.load();
 				this.rootScene.attach(this.background);
-				this.rootScene.attach(this.book);
 				this.rootScene.attach(this.character.sprite);
+				this.rootScene.attach(this.book);
 				this.rootScene.attach(this.downArrow);
 	},
 	initialize: function() {

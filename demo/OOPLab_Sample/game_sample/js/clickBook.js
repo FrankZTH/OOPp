@@ -13,9 +13,9 @@ var clickBook = function(bookSelf) {
 		}
 		this.rotation = 0;
 
-
 		this.overScene = new OverScene(bookSelf);
 		this.overScene.load();
+		console.log("clickbookTRUE");
 	};
 
 	this.initialize = function(){
@@ -32,6 +32,9 @@ var clickBook = function(bookSelf) {
 	};
 
 	this.mousedown = function(e){
-    	console.log(e);
+    	console.log(e.e.which);
+			if(e.e.which==3){
+				this.overScene.delete();
+			}
 	};
 };

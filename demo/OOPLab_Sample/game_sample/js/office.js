@@ -16,7 +16,7 @@ var office = Framework.Class(Framework.Level , {
 	        };
 					this.characterPosition = {x: Framework.Game.getCanvasWidth() / 2 ,
 															      y: Framework.Game.getCanvasHeight() / 2+100};
-	        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,scale:0.23,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
+	        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,scale:0.2,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
 
 
 	        this.audio = new Framework.Audio({

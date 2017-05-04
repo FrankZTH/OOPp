@@ -28,6 +28,9 @@ var MyGame = Framework.Class(Framework.Level , {
 
 				this.overScene = new OverScene();
 				this.overScene.load();
+
+				this.clickBook = new clickBook(this.self);
+				this.clickBook.load();
 				this.rootScene.attach(this.background);
 				this.rootScene.attach(this.character.sprite);
 				this.rootScene.attach(this.book);
@@ -56,12 +59,11 @@ var MyGame = Framework.Class(Framework.Level , {
 		console.log(e);
 		console.log(e.e.which);
 		this.book.mousedown(e);
-
 	},
 
 	mouseup: function(e){
 		if(this.book.mouseup(e)==0){this.downArrow.mousedown(e);}
-		else this.character.move(e.x);
+		else if(e.e.which!=3 && e.e.which!=2)this.character.move(e.x);
 	}
 
 });

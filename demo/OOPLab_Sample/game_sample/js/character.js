@@ -33,7 +33,6 @@ var Character = function(file, options) {
         if(this.temp-this.sprite.position.x>0){
           this.runright();
           //console.log(this.sprite.position.x);
-
         }
         else if(this.temp-this.sprite.position.x<0){
           this.runleft();
@@ -62,7 +61,6 @@ var Character = function(file, options) {
         return 0;
       }
     }
-
 
 
 };

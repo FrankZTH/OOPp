@@ -42,10 +42,10 @@ var card = function() {
 			console.log("mousedown");
 			this.putinbag();
 			this.mousemove(e);
-			return 0;
+			return 1;
 		}
 		else {
-			return 1;
+			return 0;
 		}
 	};
 
@@ -57,8 +57,9 @@ var card = function() {
 				x:Framework.Game.getCanvasWidth()-100,
 				y:Framework.Game.getCanvasHeight()/5
 			}
-			return 0;
+			return 1;
 		}
+		else return 0;
 	};
 
 	this.mousemove= function(e) {        /////////當滑鼠點到圖形就讓圖形跟滑鼠動

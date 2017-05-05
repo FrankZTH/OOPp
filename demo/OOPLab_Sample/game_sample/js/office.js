@@ -4,9 +4,9 @@ var office = Framework.Class(Framework.Level , {
 
 	        this.background = new Framework.Sprite(define.imagePath + 'office.png');
 					this.change = new Framework.Sprite(define.imagePath + 'inside.jpg');
-	        this.background.scale = 0.32;  //時鐘規模
+	        this.background.scale = 0.32;  //背景規模
 					this.change.scale = 0.32;
-	        this.background.position = {  //以時鐘圖片的規模為原點
+	        this.background.position = {  //以背景圖片的規模為原點
 						x: Framework.Game.getCanvasWidth() / 2 ,
 						y: Framework.Game.getCanvasHeight() / 2
 	        };
@@ -16,9 +16,13 @@ var office = Framework.Class(Framework.Level , {
 	        };
 					this.characterPosition = {x: Framework.Game.getCanvasWidth() / 2 ,
 															      y: Framework.Game.getCanvasHeight() / 2+100};
-	        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,scale:0.2,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
-
-
+	        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,speed:0.2,scale:0.2,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
+					this.characterBack = new Framework.Sprite(define.imagePath + 'back.png');
+					this.characterBack.position = {
+						x: Framework.Game.getCanvasWidth() / 2 ,
+						y: Framework.Game.getCanvasHeight() / 2+150
+	        };
+					this.characterBack.scale=0.3;
 	        this.audio = new Framework.Audio({
 	            LV1:{
 	                mp3: define.musicPath + 'LV1.mp3',
@@ -47,19 +51,25 @@ var office = Framework.Class(Framework.Level , {
 
 				mousemove: function(e) {        //偵測滑鼠移動並播放圖片
 			    this.card.mousemove(e);
-					if(e.x>=446&&e.x<=484&&e.y>=230&&e.y<=276){
-						this.rootScene.attach(this.change);
-						this.rootScene.attach(this.card);
-						this.rootScene.attach(this.character.sprite);
-					}
 			  },
 
 				mousedown: function(e){
 					this.card.mousedown(e);
+					if(e.e.which==3){
+						this.rootScene.attach(this.background);
+						this.rootScene.attach(this.card);
+						this.rootScene.attach(this.character.sprite);
+					}
 				},
 
 				mouseup: function(e){
-					if(this.card.mouseup(e)==0){}
+					if(this.card.mouseup(e)==1){
+						if(e.x>=446&&e.x<=484&&e.y>=230&&e.y<=276){
+							this.rootScene.attach(this.change);
+							this.rootScene.attach(this.card);
+							this.rootScene.attach(this.characterBack);
+						}
+					}
 					else this.character.move(e.x);
 				}
 

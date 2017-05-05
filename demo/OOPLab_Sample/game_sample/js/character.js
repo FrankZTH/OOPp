@@ -61,6 +61,10 @@ var Character = function(file, options) {
         return 0;
       }
     }
+    this.mousedown = function(e){
+      if(e.e.which==3) return 1;
+      else return 0;
+    }
 
 
 };

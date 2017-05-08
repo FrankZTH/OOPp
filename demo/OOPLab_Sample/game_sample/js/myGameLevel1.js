@@ -47,7 +47,7 @@ var MyGame = Framework.Class(Framework.Level , {
 		console.log(e);
 			if(this.downArrow.mousedown(e)==0&&this.character.judge()==1){
 				this.audio.stopAll();
-	      Framework.Game.goToLevel('office');
+	      Framework.Game.goToNextLevel();
 			}
 	},
 

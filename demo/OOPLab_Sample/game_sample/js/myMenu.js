@@ -68,7 +68,7 @@ var MyMenu = Framework.exClass(Framework.GameMainMenu , {
         }
         this.previousTouch = { x: e.x, y: e.y };
         if (e.x>=this.startGame.position.x) {
-            Framework.Game.goToNextLevel();
+            Framework.Game.goToLevel('elevator');
         }
     },
 

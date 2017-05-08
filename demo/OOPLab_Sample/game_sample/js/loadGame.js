@@ -37,11 +37,12 @@ var loadGameEnd;
     var listScript =
     [
         { src: 'game_sample/js/define.js', lookFor: 'define' },
-        { src: 'game_sample/js/clickBook.js', loofFor: 'clickBook'},
-        { src: 'game_sample/js/book.js', loofFor: 'book'},
-        { src: 'game_sample/js/downArrow.js', loofFor: 'downArrow'},
-        { src: 'game_sample/js/OverScene.js', loofFor: 'OverScene'},
+        { src: 'game_sample/js/clickBook.js', lookFor: 'clickBook'},
+        { src: 'game_sample/js/book.js', lookFor: 'book'},
+        { src: 'game_sample/js/downArrow.js', lookFor: 'downArrow'},
+        { src: 'game_sample/js/OverScene.js', lookFor: 'OverScene'},
         { src: 'game_sample/js/myMenu.js', lookFor: 'MyMenu' },
+        { src: 'game_sample/js/elevator.js', lookFor: 'elevator'},
         { src: 'game_sample/js/myGameLevel1.js', lookFor: 'MyGame' },
         { src: 'game_sample/js/office.js', lookFor: 'office'},
         { src: 'game_sample/js/card.js', lookFor: 'card' },

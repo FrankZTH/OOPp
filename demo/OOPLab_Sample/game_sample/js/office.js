@@ -4,9 +4,9 @@ var office = Framework.Class(Framework.Level , {
 
 	        this.background = new Framework.Sprite(define.imagePath + 'office.png');
 					this.change = new Framework.Sprite(define.imagePath + 'inside.jpg');
-	        this.background.scale = 0.32;  //背景規模
+	        this.background.scale = 0.32;  //時鐘規模
 					this.change.scale = 0.32;
-	        this.background.position = {  //以背景圖片的規模為原點
+	        this.background.position = {  //以時鐘圖片的規模為原點
 						x: Framework.Game.getCanvasWidth() / 2 ,
 						y: Framework.Game.getCanvasHeight() / 2
 	        };
@@ -16,7 +16,7 @@ var office = Framework.Class(Framework.Level , {
 	        };
 					this.characterPosition = {x: Framework.Game.getCanvasWidth() / 2 ,
 															      y: Framework.Game.getCanvasHeight() / 2+100};
-	        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,speed:0.2,scale:0.2,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
+	        this.character = new Character(define.imagePath+'character.png',{position:this.characterPosition,scale:0.2,runright:{from:0,to:3},runleft:{from:4,to:7},stopright:{from:0,to:0},stopleft:{from:4,to:4}});
 					this.characterBack = new Framework.Sprite(define.imagePath + 'back.png');
 					this.characterBack.position = {
 						x: Framework.Game.getCanvasWidth() / 2 ,
@@ -56,9 +56,8 @@ var office = Framework.Class(Framework.Level , {
 				mousedown: function(e){
 					this.card.mousedown(e);
 					if(e.e.which==3){
-						this.rootScene.attach(this.background);
-						this.rootScene.attach(this.card);
-						this.rootScene.attach(this.character.sprite);
+						this.rootScene.detach(this.characterBack);
+						this.rootScene.detach(this.change);
 					}
 				},
 
@@ -70,7 +69,7 @@ var office = Framework.Class(Framework.Level , {
 							this.rootScene.attach(this.characterBack);
 						}
 					}
-					else this.character.move(e.x);
+					else if(e.e.which!=3 && e.e.which!=2)this.character.move(e.x);
 				}
 
 });

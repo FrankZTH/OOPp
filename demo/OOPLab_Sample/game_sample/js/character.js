@@ -53,7 +53,7 @@ var Character = function(file, options) {
         this.stopleft();
       }
     }
-    
+
     this.judge = function(){
       if(this.temp == this.sprite.position.x){
         return 1;
@@ -66,6 +66,5 @@ var Character = function(file, options) {
       if(e.e.which==3) return 1;
       else return 0;
     }
-
 
 };

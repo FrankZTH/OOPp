@@ -52,10 +52,9 @@ var elevator = Framework.Class(Framework.Level , {
 
 
 				update:function(){
-					this.now=(Date.now()-this.begintime)/1000;
-					console.log(this.now);
 					this.character.update();
 					this.character2.update();
+					this.now=(Date.now()-this.begintime)/1000;
 					if(this.character.sprite.position.x>=627&&this.character.sprite.position.x<=808&&this.character.sprite.position.y>=103&&this.character.sprite.position.y<=518){
 						if(this.now>5) Framework.Game.goToNextLevel();
 					}
@@ -68,6 +67,7 @@ var elevator = Framework.Class(Framework.Level , {
 						this.character2.sprite.position.x=1268;
 					}
 				},
+
 			  initialize: function() {
 			  },
 

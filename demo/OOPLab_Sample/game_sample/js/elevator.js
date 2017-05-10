@@ -5,11 +5,14 @@ var elevator = Framework.Class(Framework.Level , {
 	        this.background = new Framework.Sprite(define.imagePath + 'elevator.png');
 					this.change = new Framework.Sprite(define.imagePath + 'openElevator.png');
 					this.mirror = new Framework.Sprite(define.imagePath + 'noMirror.png');
-					this.close = new Framework.Sprite(define.imagePath + 'closeElevator.png');
+					this.close = new Array();
+					this.close[0] = new Framework.Sprite(define.imagePath + 'c1.png');
+					this.close[1] = new Framework.Sprite(define.imagePath + 'c2.png');
+					this.close[2] = new Framework.Sprite(define.imagePath + 'c3.png');
+					this.close[3] = new Framework.Sprite(define.imagePath + 'c13.png');
 	        this.background.scale = 0.32;  //時鐘規模
 					this.change.scale = 0.32;
 					this.mirror.scale =0.32;
-					this.close.scale = 0.32;
 	        this.background.position = {  //以時鐘圖片的規模為原點
 						x: Framework.Game.getCanvasWidth() / 2 ,
 						y: Framework.Game.getCanvasHeight() / 2
@@ -22,10 +25,13 @@ var elevator = Framework.Class(Framework.Level , {
 						x: Framework.Game.getCanvasWidth() / 2 ,
 						y: Framework.Game.getCanvasHeight() / 2
 	        };
-					this.close.position = {
-						x: Framework.Game.getCanvasWidth() / 2 ,
-						y: Framework.Game.getCanvasHeight() / 2
-	        };
+					for(var c=0;c<4;c++){
+						this.close[c].scale = 0.32;
+						this.close[c].position = {
+							x: Framework.Game.getCanvasWidth() / 2 ,
+							y: Framework.Game.getCanvasHeight() / 2
+		        };
+					}
 					this.characterPosition = {
 						x: Framework.Game.getCanvasWidth() / 2 ,
 						y: Framework.Game.getCanvasHeight() / 2 + 100
@@ -55,8 +61,17 @@ var elevator = Framework.Class(Framework.Level , {
 					this.character.update();
 					this.character2.update();
 					this.now=(Date.now()-this.begintime)/1000;
-					if(this.character.sprite.position.x>=627&&this.character.sprite.position.x<=808&&this.character.sprite.position.y>=103&&this.character.sprite.position.y<=518){
+					if(this.character.sprite.position.x>=627&&this.character.sprite.position.x<=808){
 						if(this.now>5) Framework.Game.goToNextLevel();
+						else if(this.now>4){
+							this.rootScene.attach(this.close[3]);
+						}
+						else if(this.now>3){
+							this.rootScene.attach(this.close[2]);
+						}
+						else if(this.now>2){
+							this.rootScene.attach(this.close[1]);
+						}
 					}
 					if(this.character.sprite.position.x<=493){
 						this.character.sprite.position.x=493;
@@ -89,7 +104,7 @@ var elevator = Framework.Class(Framework.Level , {
 					}
 					if(open==true){
 						if(this.character.sprite.position.x>=640&&this.character.sprite.position.x<=788&&this.character.sprite.position.y>=103&&this.character.sprite.position.y<=518&&e.x>=627&&e.x<=808&&e.y>=103&&e.y<=518){
-							this.rootScene.attach(this.close);
+							this.rootScene.attach(this.close[0]);
 							this.rootScene.detach(this.mirror);
 							this.now=0;
 							this.begintime= Date.now();

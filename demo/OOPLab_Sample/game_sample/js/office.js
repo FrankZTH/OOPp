@@ -54,6 +54,7 @@ var office = Framework.Class(Framework.Level , {
 			  },
 
 				mousedown: function(e){
+					console.log(e);
 					this.card.mousedown(e);
 					if(e.e.which==3){
 						this.rootScene.detach(this.characterBack);
@@ -63,13 +64,13 @@ var office = Framework.Class(Framework.Level , {
 
 				mouseup: function(e){
 					if(this.card.mouseup(e)==1){
-						if(e.x>=446&&e.x<=484&&e.y>=230&&e.y<=276){
+						if(e.x>=446&&e.x<=484&&e.y>=230&&e.y<=276&&this.character.sprite.position.x<754&&this.character.sprite.position.x>506){
 							this.rootScene.attach(this.change);
 							this.rootScene.attach(this.card);
 							this.rootScene.attach(this.characterBack);
 						}
 					}
-					else if(e.e.which!=3 && e.e.which!=2)this.character.move(e.x);
+					else if(e.e.which!=3 && e.e.which!=2) this.character.move(e.x);
 				}
 
 });
